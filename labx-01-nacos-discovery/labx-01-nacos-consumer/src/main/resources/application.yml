@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8080
 
 spring:
   application:
@@ -7,8 +7,8 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
-        namespace: 64d5880d-22ef-4a46-a349-f25a0c39340f
+        server-addr: 127.0.0.1:8848,127.0.0.1:8849
+        namespace: 30b6c7fa-e157-4362-8080-aef19dc98069
 
 management:
   endpoints:

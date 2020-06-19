@@ -1,6 +1,5 @@
 package labx01.nacos;
 
-import labx01.nacos.provider.api.FeignEchoApi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -18,8 +17,4 @@ public class NacosProviderApp {
     public static void main(String[] args) {
         SpringApplication.run(NacosProviderApp.class, args);
     }
-
-
-
-
 }
