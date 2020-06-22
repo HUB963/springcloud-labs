@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: labx-01-nacos-config
+  cloud:
+    nacos:
+      # 必须配置在boostrap中，针对多环境，可以使用jvm参数-Dspring.profile.active=test来指定，目前测试通过启动主函数参数形式未生效--spring.profile.active=test
+      config:
+        server-addr: 127.0.0.1:8848
+#        namespace: 30b6c7fa-e157-4362-8080-aef19dc98069
+        file-extension: yaml
+#        group:
+#        name: # 使用的 Nacos 配置集的 dataId，默认为 spring.application.name
+        ext-config[0]:
+          data-id: ${spring.application.name}-ext-0.yaml
+          refresh: true
+

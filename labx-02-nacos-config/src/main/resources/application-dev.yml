@@ -1,0 +1,4 @@
+nacos:
+  config:
+    switch:
+      max: 5
