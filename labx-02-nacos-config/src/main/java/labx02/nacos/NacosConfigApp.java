@@ -3,9 +3,12 @@ package labx02.nacos;
 import labx02.nacos.config.ConfigPOJO;
 import labx02.nacos.config.ExtConfigPOJO;
 import org.apache.commons.lang3.StringUtils;
+import org.jasypt.encryption.StringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +27,7 @@ public class NacosConfigApp {
         applicationContext = SpringApplication.run(NacosConfigApp.class, args);
     }
 
+    @RefreshScope
     @RestController
     public class ConfigController {
 
@@ -52,6 +56,27 @@ public class NacosConfigApp {
         public String getExtConfig() {
             return extConfigPOJO.getName();
         }
+
+        @Autowired
+        StringEncryptor stringEncryptor;
+
+        @GetMapping("/nacos/config/jasypt/encode")
+        public void encode() {
+            String password = "woshimima";
+            System.out.println(stringEncryptor.encrypt(password));
+
+            password = "bushimima";
+            System.out.println(stringEncryptor.encrypt(password));
+        }
+
+        @Value("${xxx.password:}")
+        private String xxxPassword;
+
+        @GetMapping("/nacos/config/jasypt/get")
+        public String getPassword() {
+            return xxxPassword;
+        }
+
     }
 
 }

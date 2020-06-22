@@ -23,6 +23,7 @@ public class FeignEchoController implements FeignEchoApi {
     @Autowired
     Environment environment;
 
+    @Override
     public String echo(String string) {
         String host = "";
         try {

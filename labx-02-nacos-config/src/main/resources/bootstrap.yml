@@ -1,6 +1,6 @@
 spring:
   application:
-    name: labx-01-nacos-config
+    name: labx-02-nacos-config
   cloud:
     nacos:
       # 必须配置在boostrap中，针对多环境，可以使用jvm参数-Dspring.profile.active=test来指定，目前测试通过启动主函数参数形式未生效--spring.profile.active=test
@@ -13,4 +13,6 @@ spring:
         ext-config[0]:
           data-id: ${spring.application.name}-ext-0.yaml
           refresh: true
-
+        ext-config[1]:
+          data-id: ${spring.application.name}-jasypt.yaml
+          refresh: true
